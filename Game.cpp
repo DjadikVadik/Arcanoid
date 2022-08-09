@@ -1,9 +1,20 @@
 #include "Game.h"
 
+void Game::initial_vector()
+{
+	levels.push_back(new Level_1);
+	levels.push_back(new Level_2);
+	levels.push_back(new Level_3);
+	levels.push_back(new Level_4);
+	levels.push_back(new Level_5);
+	levels.push_back(new Level_6);
+}
+
 void Game::initial()
 {
+	initial_vector();
 	st.initial();
-	level.create(st);
+	levels[st.level]->create(st);
 	racket.initial(st);
 	ball.initial(st);
 }
@@ -53,6 +64,7 @@ void Game::move_ball()
 	while (!st.game_over) {
 		ball.move_ball(st);
 		if (st.coins == 0) {
+			st.level++;
 			initial();
 			show();
 		}

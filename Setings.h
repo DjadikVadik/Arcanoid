@@ -16,6 +16,7 @@ struct Setings {
 	int racket_length;
 	int speed;
 	int coins = 0;
+	int level = 0;
 
 	std::mutex mtx;
 
